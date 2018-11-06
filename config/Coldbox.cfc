@@ -65,6 +65,12 @@
 			exclude = []
 		};
 
+		moduleSettings = {
+			"cbauth" = {
+				"userServiceClass" = "UserService"
+			}
+		};
+
 		//LogBox DSL
 		logBox = {
 			// Define Appenders
