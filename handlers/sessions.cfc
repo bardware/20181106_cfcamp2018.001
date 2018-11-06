@@ -2,10 +2,7 @@
 * I am a new handler
 */
 component{
-
-	property name="userService" inject="";
-	property name="messagebox" inject="messagebox@cbmessagebox";
-
+	
 	// OPTIONAL HANDLER PROPERTIES
 	this.prehandler_only 	= "";
 	this.prehandler_except 	= "";
@@ -15,7 +12,7 @@ component{
 	this.aroundHandler_except = "";
 	// REST Allowed HTTP Methods Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'}
 	this.allowedMethods = {};
-
+	
 	/**
 	IMPLICIT FUNCTIONS: Uncomment to use
 	function preHandler( event, rc, prc, action, eventArguments ){
@@ -33,32 +30,28 @@ component{
 	function onInvalidHTTPMethod( event, rc, prc, faultAction, eventArguments ){
 	}
 	*/
-
+		
 	/**
 	* new
 	*/
 	function new( event, rc, prc ){
-		event.setView( "registration/new" );
+		event.setView( "sessions/new" );
 	}
 
 	/**
-    * create
-    */
-    function create( event, rc, prc ){
-        event.paramValue( "email", "" )
-            .paramValue( "username", "" )
-            .paramValue( "password", "" );
-
-        var generatedKey = userService.create(
-            rc.email,
-            rc.username,
-            rc.password
-        );
-
-        getInstance( "messageBox@cbmessagebox" )
-			.success( "The user #encodeForHTML( rc.username )# with id: #generatedKey# was created!" );
-
-        relocate( uri = "/" );
+	* create
+	*/
+	function create( event, rc, prc ){
+		event.setView( "sessions/create" );
 	}
 
+	/**
+	* delete
+	*/
+	function delete( event, rc, prc ){
+		event.setView( "sessions/delete" );
+	}
+
+
+	
 }

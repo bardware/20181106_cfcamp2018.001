@@ -28,11 +28,7 @@
 			</nav>
 			<main role="main" class="container">
 
-				<cfif flash.exists( "notice" )>
-					<div class="alert alert-#flash.get( "notice").type#">
-					#flash.get( "notice" ).message#
-					</div>
-				</cfif>
+				#getInstance( "messagebox@cbMessageBox" ).renderit()#
 
 				#renderView()#
 			</main>
