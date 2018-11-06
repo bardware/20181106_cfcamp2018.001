@@ -6,12 +6,12 @@
 		// coldbox directives
 		coldbox = {
 			//Application Setup
-			appName 				= "Your app name here",
+			appName 				= "SoapBox",
 			eventName 				= "event",
 
 			//Development Settings
-			reinitPassword			= "",
-			handlersIndexAutoReload = true,
+			reinitPassword			= "password",
+			handlersIndexAutoReload = false,
 
 			//Implicit Events
 			defaultEvent			= "",
@@ -40,9 +40,9 @@
 			customErrorTemplate			= "",
 
 			//Application Aspects
-			handlerCaching 			= false,
-			eventCaching			= false,
-			viewCaching				= false
+			handlerCaching 			= true,
+			eventCaching			= true,
+			viewCaching				= true
 		};
 
 		// custom settings
@@ -136,6 +136,10 @@
 	*/
 	function development(){
 		coldbox.customErrorTemplate = "/coldbox/system/includes/BugReport.cfm";
+		coldbox.reinitpassword = "";
+		coldbox.handlersIndexAutoReload = true;
+		coldbox.handlerCaching = false;
+		coldbox.eventCaching = false;
 	}
 
 }

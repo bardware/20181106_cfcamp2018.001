@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<!-- Environment: #getSetting( "environment" )# -->
 	<!---Top NavBar --->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
 		<!---Brand --->
