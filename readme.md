@@ -10,6 +10,8 @@ Apache License, Version 2.0.
 Source Code
 - https://github.com/coldbox-templates/advanced-script
 - https://github.com/Ortus-Solutions/coldbox-zero-to-hero/blob/wip/PREREQUISITES.md
+- https://www.ortussolutions.com/blog/coldbox-and-testbox-microsoft-visual-studio-code-support-released
+- https://commandbox.ortusbooks.com/ide-integrations/visual-studio-code
 
 ## Quick Installation
 
