@@ -19,15 +19,19 @@
     "ignore":[],
     "devDependencies":{
         "testbox":"^2.7.0",
-        "cfmigrations":"^1.3.1"
+        "cfmigrations":"^1.3.1",
+        "route-visualizer":"^1.2.0+4"
     },
     "installPaths":{
         "coldbox":"coldbox",
         "testbox":"testbox",
-        "cfmigrations":"modules/cfmigrations"
+        "cfmigrations":"modules/cfmigrations",
+        "route-visualizer":"modules/route-visualizer",
+        "BCrypt":"modules/BCrypt"
     },
     "dependencies":{
-        "coldbox":"^5.0.0"
+        "coldbox":"^5.0.0",
+        "BCrypt":"^2.5.0-snapshot"
     },
     "scripts":{},
     "testbox":{

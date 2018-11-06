@@ -3,6 +3,8 @@
 */
 component{
 
+	property name="userService" inject="";
+
 	// OPTIONAL HANDLER PROPERTIES
 	this.prehandler_only 	= "";
 	this.prehandler_except 	= "";
@@ -39,10 +41,22 @@ component{
 	}
 
 	/**
-	* create
-	*/
-	function create( event, rc, prc ){
-		event.setView( "registration/create" );
+    * create
+    */
+    function create( event, rc, prc ){
+        event.paramValue( "email", "" )
+            .paramValue( "username", "" )
+            .paramValue( "password", "" );
+
+        var generatedKey = userService.create(
+            rc.email,
+            rc.username,
+            rc.password
+        );
+
+        flash.put( "notice", { type="success", message="User registered!" } );
+
+        relocate( uri = "/" );
 	}
 
 }

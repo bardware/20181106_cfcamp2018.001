@@ -27,6 +27,13 @@
 
 			</nav>
 			<main role="main" class="container">
+
+				<cfif flash.exists( "notice" )>
+					<div class="alert alert-#flash.get( "notice").type#">
+					#flash.get( "notice" ).message#
+					</div>
+				</cfif>
+
 				#renderView()#
 			</main>
 			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

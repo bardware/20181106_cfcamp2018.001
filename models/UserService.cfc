@@ -4,6 +4,7 @@
 component singleton accessors="true"{
 
 	// Properties
+	property name="bcrypt" inject="@bcrypt";
 
 	/**
 	 * Constructor
@@ -20,5 +21,28 @@ component singleton accessors="true"{
 			{ returnType = "array" }
 		)
 	}
+
+	/**
+     * Undocumented function
+     */
+    numeric function create( required email, required username, required password ){
+        queryExecute(
+            "
+            INSERT INTO `users` ( `email`, `username`, `password` )
+                VALUES ( ?, ?, ? )
+            ",
+            [
+                arguments.email,
+                arguments.username,
+                bcrypt.hashPassword( arguments.password )
+            ],
+            {
+                result : "local.result"
+            }
+        );
+
+        return result.generatedKey;
+
+    }
 
 }
