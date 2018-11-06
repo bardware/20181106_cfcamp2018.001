@@ -4,7 +4,9 @@
 
     // Default Action
     function index(event,rc,prc){
-        prc.welcomeMessage = "Welcome to ColdBox!";
+		prc.welcomeMessage = "Welcome to ColdBox!";
+
+		//getInstance( name=any, dsl=any, initArguments=any )
 
         prc.userList = userService.list();
 
