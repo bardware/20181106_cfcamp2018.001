@@ -1,0 +1,15 @@
+{
+  "web": {
+    "rewrites": {
+      "enable": "true"
+    }
+  },
+  "jvm": {
+    "javaHome": "C:\\Program Files\\Java",
+    "args": "-Djaxp.debug=1"
+  },
+  "app": {
+    "cfengine": "lucee@5.2.9+31"
+  },
+  "openbrowser": "false"
+}
