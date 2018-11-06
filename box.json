@@ -27,5 +27,8 @@
     "dependencies":{
         "coldbox":"^5.0.0"
     },
-    "scripts":{}
+    "scripts":{},
+    "testbox":{
+        "runner":"http://localhost:42518/tests/runner.cfm"
+    }
 }
