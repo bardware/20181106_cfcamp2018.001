@@ -8,7 +8,7 @@
 
 	// Do something
 	function doSomething(event,rc,prc){
-		relocate( "main.index" );
+		relocate( "main" );
 	}
 
 	/************************************** IMPLICIT ACTIONS *********************************************/
