@@ -9,10 +9,11 @@ Apache License, Version 2.0.
 
 Source Code
 - https://github.com/coldbox-templates/advanced-script
+- https://github.com/Ortus-Solutions/coldbox-zero-to-hero/blob/wip/PREREQUISITES.md
 
 ## Quick Installation
 
-Each application templates contains a `box.json` so it can leverage [CommandBox](http://www.ortussolutions.com/products/commandbox) for its dependencies.  
+Each application templates contains a `box.json` so it can leverage [CommandBox](http://www.ortussolutions.com/products/commandbox) for its dependencies.
 Just go into each template directory and type:
 
 ```
@@ -28,6 +29,6 @@ box server start
 And run the application.
 
 ---
- 
+
 ###THE DAILY BREAD
  > "I am the way, and the truth, and the life; no one comes to the Father, but by me (JESUS)" Jn 14:1-12
