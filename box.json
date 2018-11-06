@@ -18,11 +18,13 @@
     "contributors":[],
     "ignore":[],
     "devDependencies":{
-        "testbox":"^2.7.0"
+        "testbox":"^2.7.0",
+        "cfmigrations":"^1.3.1"
     },
     "installPaths":{
         "coldbox":"coldbox",
-        "testbox":"testbox"
+        "testbox":"testbox",
+        "cfmigrations":"modules/cfmigrations"
     },
     "dependencies":{
         "coldbox":"^5.0.0"
@@ -30,5 +32,15 @@
     "scripts":{},
     "testbox":{
         "runner":"http://localhost:42518/tests/runner.cfm"
+    },
+    "cfmigrations":{
+        "schema":"${DB_DATABASE}",
+        "connectionInfo":{
+            "password":"${DB_PASSWORD}",
+            "connectionString":"${DB_CONNECTIONSTRING}",
+            "class":"${DB_CLASS}",
+            "username":"${DB_USER}"
+        },
+        "defaultGrammar":"AutoDiscover"
     }
 }

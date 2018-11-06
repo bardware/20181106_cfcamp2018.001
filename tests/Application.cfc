@@ -19,4 +19,20 @@ component{
 	rootPath = REReplaceNoCase( this.mappings[ "/tests" ], "tests(\\|/)", "" );
 	this.mappings["/root"]   = rootPath;
 
+	variables.util = new coldbox.system.core.util.Util();
+
+	this.datasources = {
+		"soapbox" = {
+			"class" = util.getSystemSetting( "DB_CLASS" ),
+			"connectionString" = util.getSystemSetting( "DB_CONNECTIONSTRING" ),
+			"username" = util.getSystemSetting( "DB_USER" ),
+			"password" = util.getSystemSetting( "DB_PASSWORD" )
+		}
+	};
+	this.datasource = "soapbox";
+
+	public void function onRequestEnd() {
+		structDelete( application, "cbController" );
+		structDelete( application, "wirebox" );
+	}
 }

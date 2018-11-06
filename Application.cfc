@@ -11,11 +11,23 @@ component{
 	this.setClientCookies = true;
 
 	// Java Integration
-	this.javaSettings = { 
-		loadPaths = [ ".\lib" ], 
-		loadColdFusionClassPath = true, 
-		reloadOnChange= false 
+	this.javaSettings = {
+		loadPaths = [ ".\lib" ],
+		loadColdFusionClassPath = true,
+		reloadOnChange= false
 	};
+
+	variables.util = new coldbox.system.core.util.Util();
+
+	this.datasources = {
+		"soapbox" = {
+			"class" = util.getSystemSetting( "DB_CLASS" ),
+			"connectionString" = util.getSystemSetting( "DB_CONNECTIONSTRING" ),
+			"username" = util.getSystemSetting( "DB_USER" ),
+			"password" = util.getSystemSetting( "DB_PASSWORD" )
+		}
+	};
+	this.datasource = "soapbox";
 
 	// COLDBOX STATIC PROPERTY, DO NOT CHANGE UNLESS THIS IS NOT THE ROOT OF YOUR COLDBOX APP
 	COLDBOX_APP_ROOT_PATH = getDirectoryFromPath( getCurrentTemplatePath() );
