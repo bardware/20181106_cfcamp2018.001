@@ -3,7 +3,7 @@
 */
 component{
 
-	property name="reactionService" inject;
+    property name="reactionService" inject="id";
 
 	// OPTIONAL HANDLER PROPERTIES
 	this.prehandler_only 	= "";
@@ -32,6 +32,17 @@ component{
 	function onInvalidHTTPMethod( event, rc, prc, faultAction, eventArguments ){
 	}
 	*/
+
+    /**
+    * Executes before all handler actions
+    */
+    any function preHandler( event, rc, prc, action, eventArguments ){
+        event.paramValue( "id", "" );
+        if( !len( rc.id ) ){
+            messagebox.warn( "No rant ID located" );
+            relocate( "rants" );
+        }
+	}
 
 	/**
 	* create

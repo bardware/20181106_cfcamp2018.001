@@ -36,11 +36,12 @@ And run the application.
 ## Commands
 
 - install commandbox-dotenv,commandbox-migrations
+- coldbox create app soapbox
 - start cfengine=lucee@5 port=42518 --rewritesEnable
 - testbox run "http://localhost:42518/tests/runner.cfm"
 - package set testbox.runner="http://localhost:42518/tests/runner.cfm"
 - package show
-- testbox run```
+- testbox run
 - testbox watch **.cfc
 - coldbox reinit
 - coldbox create view about/index
