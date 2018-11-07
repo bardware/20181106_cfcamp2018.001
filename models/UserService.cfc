@@ -34,7 +34,7 @@ component singleton accessors="true"{
         );
     }
 
-    User function retrieveByusername( required username ){
+    User function retrieveUserByUsername( required username ){
         return populator.populateFromQuery(
             new(),
             queryExecute( "SELECT * FROM `users` WHERE `username` = ?", [ username ] ),

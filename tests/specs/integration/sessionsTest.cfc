@@ -17,18 +17,29 @@
 *******************************************************************************/
 component extends="tests.resources.BaseIntegrationSpec" appMapping="/"{
 
+	property name="query" inject="provider:queryBuilder@qb";
+	property name="bcrypt" inject="@bcrypt";
+
 	/*********************************** LIFE CYCLE Methods ***********************************/
 
 	function beforeAll(){
 		super.beforeAll();
 		// do your own stuff here
+		query.from( "users" )
+			.insert( values = {
+				username : "testuser",
+				email : "testuser@test.com",
+				password: bcrypt.hashPassword( "password" )
+			});
 	}
 
 	function afterAll(){
 		// do your own stuff here
 		super.afterAll();
+		query.from( "users" )
+			.where( "username", "=", "testuser" )
+			.delete();
 	}
-
 	/*********************************** BDD SUITES ***********************************/
 
 	function run(){
@@ -47,23 +58,26 @@ component extends="tests.resources.BaseIntegrationSpec" appMapping="/"{
 			});
 
 			it( "can login a valid user", function(){
-				var event = execute( event="sessions.create", renderResults=true );
+				var event = post( route="/login", params={ username="testuser", password="password" } );
 				// expectations go here.
-				expect( false ).toBeTrue();
+				expect( event.getValue( "relocate_URI" ) ).toBe( "/" );
+				expect( getInstance( "authenticationService@cbauth" ).isLoggedIn() ).toBeTrue();
+				getInstance( "authenticationService@cbauth" ).logout();
 			});
 
 			it( "can kick out an invalid user", function(){
-				var event = execute( event="sessions.create", renderResults=true );
+				var event = post( route="/login", params={ username="bogus", password="bogus" } );
 				// expectations go here.
-				expect( false ).toBeTrue();
+				expect( event.getValue( "relocate_URI" ) ).toBe( "/login" );
+				expect( getInstance( "authenticationService@cbauth" ).isLoggedIn() ).toBeFalse();
 			});
 
 			it( "can logout a user", function(){
-				var event = execute( event="sessions.delete", renderResults=true );
+				var event = delete( route="/logout" );
 				// expectations go here.
-				expect( false ).toBeTrue();
+				expect( event.getValue( "relocate_URI" ) ).toBe( "/" );
+				expect( getInstance( "authenticationService@cbauth" ).isLoggedIn() ).toBeFalse();
 			});
-
 
 		});
 

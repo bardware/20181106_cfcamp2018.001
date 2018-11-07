@@ -2,7 +2,10 @@
 * I am a new handler
 */
 component{
-	
+
+	property name="auth" inject="authenticationService@cbauth";
+	property name="messagebox" inject="messagebox@cbmessagebox";
+
 	// OPTIONAL HANDLER PROPERTIES
 	this.prehandler_only 	= "";
 	this.prehandler_except 	= "";
@@ -12,7 +15,7 @@ component{
 	this.aroundHandler_except = "";
 	// REST Allowed HTTP Methods Ex: this.allowedMethods = {delete='POST,DELETE',index='GET'}
 	this.allowedMethods = {};
-	
+
 	/**
 	IMPLICIT FUNCTIONS: Uncomment to use
 	function preHandler( event, rc, prc, action, eventArguments ){
@@ -30,7 +33,7 @@ component{
 	function onInvalidHTTPMethod( event, rc, prc, faultAction, eventArguments ){
 	}
 	*/
-		
+
 	/**
 	* new
 	*/
@@ -41,17 +44,29 @@ component{
 	/**
 	* create
 	*/
+	/**
+	* create
+	*/
 	function create( event, rc, prc ){
-		event.setView( "sessions/create" );
+		event.paramValue( "username", "" )
+			.paramValue( "password", "" )
+		try{
+			auth.authenticate( rc.username, rc.password );
+			messagebox.success( "You are in!" );
+			relocate( uri="/" );
+		}catch( InvalidCredentials e ){
+			messagebox.warn( e.message );
+			relocate( uri = "/login" );
+		}
 	}
 
 	/**
 	* delete
 	*/
 	function delete( event, rc, prc ){
-		event.setView( "sessions/delete" );
+		auth.logout();
+		messagebox.info( "bye bye!" );
+		relocate( uri = "/" );
 	}
 
-
-	
 }

@@ -21,7 +21,15 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
-						<a href="#event.buildLink( "/registration/new" )#" class="nav-link">Register</a>
+						<cfif auth().isLoggedIn()>
+							<form method="POST" action="#event.buildLink( "logout" )#">
+								<input type="hidden" name="_method" value="DELETE" />
+								<button type="submit" class="btn btn-link nav-link">Log Out</button>
+							</form>
+						<cfelse>
+							<a href="#event.buildLink( "registration.new" )#" class="nav-link">Register</a>
+							<a href="#event.buildLink( "login" )#" class="nav-link">Log In</a>
+						</cfif>
 					</ul>
 				</div>
 
