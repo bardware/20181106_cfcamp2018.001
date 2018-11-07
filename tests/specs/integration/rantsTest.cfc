@@ -60,17 +60,18 @@ component extends="tests.resources.BaseIntegrationSpec" appMapping="/"{
 			});
 
 			it( "can display the rant form", function(){
-				var event = get( route="/rants/new" );
-				// expectations go here.
-				expect( event.getRenderedContent() ).toinclude( "Rant About It" );
-			});
+                auth.authenticate( "testuser", "password" );
+                var event = get( route="/rants/new" );
+                // expectations go here.
+                expect( event.getRenderedContent() ).toinclude( "Rant About It" );
+            });
 
-			it( "can stop a rant from being created from an invalid user", function(){
-				expect( function(){
-					var event = post( route="/rants/create", params={
-						body = "Testing Rant!"
-					});
-				}).toThrow( type = "NoUserLoggedIn" );
+            it( "can stop a rant from being created from an invalid user", function(){
+                auth.logout();
+                var event = post( route="/rants/create", params={
+                    body = "Testing Rant!"
+                });
+                expect( event.getValue( "setnextevent_event" ) ).toBe( "login" );
 			});
 
 			it( "can create a rant from a valid user", function(){

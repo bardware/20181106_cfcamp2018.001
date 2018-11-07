@@ -7,6 +7,8 @@ component singleton accessors="true"{
 	property name="bcrypt" inject="@bcrypt";
     property name="wirebox" inject="wirebox";
 	property name="populator" inject="wirebox:populator";
+	property name="authenticationService"     inject="AuthenticationService@cbauth";
+	property name="messagebox"                 inject="messagebox@cbmessagebox";
 
 	/**
 	 * Constructor
@@ -25,6 +27,17 @@ component singleton accessors="true"{
 	}
 
 	User function new() provider="User"{}
+
+	function userValidator( rule, controller ){
+        var isLoggedIn = authenticationService.isLoggedIn();
+        // Validate the rule roles, permissions, etc
+
+        if( !isLoggedIn ){
+            messagebox.warn( "You cannot access this buddy! Try again!" );
+        }
+
+        return isLoggedIn;
+    }
 
     User function retrieveUserByID( required id ){
         return populator.populateFromQuery(

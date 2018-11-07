@@ -14,6 +14,7 @@ Source Code
 - https://commandbox.ortusbooks.com/ide-integrations/visual-studio-code
 - https://github.com/Ortus-Solutions/coldbox-zero-to-hero/blob/wip/STEPS.md
 - https://apidocs.ortussolutions.com/coldbox/5.2.0/index.html
+- https://github.com/coldbox-modules/cbox-security/wiki/Custom-Security-Validator-Object
 
 ## Quick Installation
 
@@ -71,6 +72,7 @@ And run the application.
 - coldbox create model name="Rant" properties="id,body,createdDate:date,modifiedDate:date,userID" methods="getUser,isLoaded"
 - coldbox create model name="RantService" persistence="singleton" methods="getAll,create,new"
 - coldbox create handler name="rants" actions="index,new,create"
+- install cbsecurity
 
 ---
 
