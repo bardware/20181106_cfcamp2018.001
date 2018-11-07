@@ -12,6 +12,8 @@ Source Code
 - https://github.com/Ortus-Solutions/coldbox-zero-to-hero/blob/wip/PREREQUISITES.md
 - https://www.ortussolutions.com/blog/coldbox-and-testbox-microsoft-visual-studio-code-support-released
 - https://commandbox.ortusbooks.com/ide-integrations/visual-studio-code
+- https://github.com/Ortus-Solutions/coldbox-zero-to-hero/blob/wip/STEPS.md
+- https://apidocs.ortussolutions.com/coldbox/5.2.0/index.html
 
 ## Quick Installation
 
@@ -29,6 +31,46 @@ box server start
 ```
 
 And run the application.
+
+## Commands
+
+- install commandbox-dotenv,commandbox-migrations
+- start cfengine=lucee@5 port=42518 --rewritesEnable
+- testbox run "http://localhost:42518/tests/runner.cfm"
+- package set testbox.runner="http://localhost:42518/tests/runner.cfm"
+- package show
+- testbox run```
+- testbox watch **.cfc
+- coldbox reinit
+- coldbox create view about/index
+- coldbox create handler name="about" actions="index" views=false
+- echo ${DB_USER}
+- reload
+- migrate install
+- migrate create create_users_table
+- migrate up
+- migrate down
+- migrate fresh
+- install commandbox-migrations
+- install commandbox-dotenv
+- migrate init
+- server restart
+- install cfmigrations --saveDev
+- coldbox create model name="UserService" persistence="singleton"
+- coldbox create handler name="registration" actions="new,create"
+- install route-visualizer --saveDev
+- coldbox reinit
+- Browser: http://127.0.0.1:42518/route-visualizer
+- install bcrypt
+- install cbmessagebox && coldbox reinit
+- coldbox create handler name="sessions" actions="new,create,delete"
+- install cbauth && coldbox reinit
+- coldbox create model name="User" properties="id,username,email,password"
+- migrate create create_rants_table
+- migrate up
+- coldbox create model name="Rant" properties="id,body,createdDate:date,modifiedDate:date,userID" methods="getUser,isLoaded"
+- coldbox create model name="RantService" persistence="singleton" methods="getAll,create,new"
+
 
 ---
 
