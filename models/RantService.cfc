@@ -33,6 +33,25 @@ component singleton accessors="true"{
 		} );
 	}
 
+	function get( id ){
+        var aRant = queryExecute(
+            "SELECT * from rants where id = ? order by createdDate DESC",
+            [ arguments.id ],
+            { returnType = "array" }
+        ).map( function( rant ){
+            return populator.populateFromStruct(
+                new(),
+                rant
+            );
+        } );
+
+        if( aRant.isEmpty() ){
+            return new();
+        } else{
+            return aRant[ 1 ];
+        }
+	}
+
 	/**
 	 * Create a new rant
 	 *

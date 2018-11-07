@@ -78,6 +78,8 @@ And run the application.
 - coldbox create model name="ReactionService" methods="getBumpsForRant,getPoopsForRant"
 - coldbox create model name="Poop" properties="userId,rantId"
 - coldbox create model name="Bump" properties="userId,rantId"
+- coldbox create handler name="bumps" actions="create,delete"
+- coldbox create handler name="poops" actions="create,delete"
 
 ---
 

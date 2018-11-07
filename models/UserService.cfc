@@ -9,6 +9,7 @@ component singleton accessors="true"{
 	property name="populator" inject="wirebox:populator";
 	property name="authenticationService"     inject="AuthenticationService@cbauth";
 	property name="messagebox"                 inject="messagebox@cbmessagebox";
+	property name="reactionService"             inject;
 
 	/**
 	 * Constructor
@@ -79,6 +80,32 @@ component singleton accessors="true"{
 		);
 		user.setId( result.generatedKey );
 		return user;
+	}
+
+	function getBumpsForUser( required user ){
+        return queryExecute(
+            "select * from bumps where userId = ?",
+            [ user.getId() ],
+            { returnType = "array" }
+        ).map( function( bump ){
+            return populator.populateFromStruct(
+                reactionService.newBump(),
+                bump
+            )
+        } );
+    }
+
+    function getPoopsForUser( required user ){
+        return queryExecute(
+            "select * from poops where userId = ?",
+            [ user.getId() ],
+            { returnType = "array" }
+        ).map( function( poop ){
+            return populator.populateFromStruct(
+                reactionService.newPoop(),
+                poop
+            )
+        } );
 	}
 
 }

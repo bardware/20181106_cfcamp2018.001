@@ -3,6 +3,20 @@ component{
 	function configure(){
 		setFullRewrites( true );
 
+		route( "rants/:id/bumps" )
+			.withAction( {
+				"POST" : "create",
+				"DELETE" : "delete"
+			} )
+			.toHandler( "bumps" );
+
+		route( "rants/:id/poops" )
+			.withAction( {
+				"POST" : "create",
+				"DELETE" : "delete"
+			} )
+			.toHandler( "poops" );
+
 		resources( "registration" )
 			.resources( "rants" );
 
