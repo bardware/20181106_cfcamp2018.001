@@ -5,6 +5,7 @@ component accessors="true"{
 
 	//DI
 	property name="userService" inject;
+	property name="reactionService" inject;
 
 	// Properties
 	property name="id" type="string";
@@ -33,6 +34,14 @@ component accessors="true"{
 	*/
 	function isLoaded(){
 		return ( !isNull( variables.id ) && len( variables.id ) );
+	}
+
+	array function getBumps(){
+        return reactionService.getBumpsForRant( this );
+    }
+
+    array function getPoops(){
+        return reactionService.getPoopsForRant( this );
 	}
 
 }

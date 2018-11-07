@@ -73,6 +73,11 @@ And run the application.
 - coldbox create model name="RantService" persistence="singleton" methods="getAll,create,new"
 - coldbox create handler name="rants" actions="index,new,create"
 - install cbsecurity
+- migrate create create_bumps_table
+- migrate create create_poops_table
+- coldbox create model name="ReactionService" methods="getBumpsForRant,getPoopsForRant"
+- coldbox create model name="Poop" properties="userId,rantId"
+- coldbox create model name="Bump" properties="userId,rantId"
 
 ---
 

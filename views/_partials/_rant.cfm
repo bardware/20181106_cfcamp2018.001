@@ -7,6 +7,14 @@
         </div>
         <div class="panel card-body">
             #args.rant.getBody()#
+		</div>
+		<div class="card-footer">
+            <button class="btn btn-outline-dark">
+                #args.rant.getBumps().len()# 👊
+            </button>
+            <button class="btn btn-outline-dark">
+                #args.rant.getPoops().len()# 💩
+            </button>
         </div>
     </div>
 </cfoutput>

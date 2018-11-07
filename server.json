@@ -2,11 +2,14 @@
   "web": {
     "rewrites": {
       "enable": "true"
+    },
+    "http": {
+      "port": "42518"
     }
   },
   "jvm": {
     "javaHome": "C:\\Program Files\\Java",
-    "args": "-Djaxp.debug=1"
+    "args": "-Djaxp.debug=1 -Duser.region=DE -Dfile.encoding=UTF8"
   },
   "app": {
     "cfengine": "lucee@5.2.9+31"
