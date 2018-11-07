@@ -44,19 +44,13 @@ component{
 	/**
     * create
     */
-    function create( event, rc, prc ){
+	function create( event, rc, prc ){
         event.paramValue( "email", "" )
             .paramValue( "username", "" )
             .paramValue( "password", "" );
 
-        var generatedKey = userService.create(
-            rc.email,
-            rc.username,
-            rc.password
-        );
-
-        getInstance( "messageBox@cbmessagebox" )
-			.success( "The user #encodeForHTML( rc.username )# with id: #generatedKey# was created!" );
+        userService.create( populateModel( "User" ) );
+        messagebox.success( "User registered!" );
 
         relocate( uri = "/" );
 	}

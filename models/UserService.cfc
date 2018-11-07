@@ -51,27 +51,21 @@ component singleton accessors="true"{
         return bcrypt.checkPassword( password, oUser.getPassword() );
 	}
 
-	/**
-     * Undocumented function
-     */
-    numeric function create( required email, required username, required password ){
-        queryExecute(
-            "
-            INSERT INTO `users` ( `email`, `username`, `password` )
-                VALUES ( ?, ?, ? )
-            ",
-            [
-                arguments.email,
-                arguments.username,
-                bcrypt.hashPassword( arguments.password )
-            ],
-            {
-                result : "local.result"
-            }
-        );
-
-        return result.generatedKey;
-
-    }
+	function create( required user ){
+		queryExecute(
+			"
+				INSERT INTO `users` (`email`, `username`, `password`)
+				VALUES (?, ?, ?)
+			",
+			[
+				user.getEmail(),
+				user.getUsername(),
+				bcrypt.hashPassword( user.getPassword() )
+			],
+			{ result = "local.result" }
+		);
+		user.setId( result.generatedKey );
+		return user;
+	}
 
 }

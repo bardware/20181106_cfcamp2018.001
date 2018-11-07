@@ -9,7 +9,6 @@ component accessors="true"{
 	property name="email" type="string";
 	property name="password" type="string";
 
-
 	/**
 	 * Constructor
 	 */
