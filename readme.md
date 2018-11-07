@@ -70,7 +70,7 @@ And run the application.
 - migrate up
 - coldbox create model name="Rant" properties="id,body,createdDate:date,modifiedDate:date,userID" methods="getUser,isLoaded"
 - coldbox create model name="RantService" persistence="singleton" methods="getAll,create,new"
-
+- coldbox create handler name="rants" actions="index,new,create"
 
 ---
 
