@@ -3,7 +3,8 @@ component{
 	function configure(){
 		setFullRewrites( true );
 
-		resources( "registration" );
+		resources( "registration" )
+            .resources( "rants" );
 
 		route( "/login" )
         	.withAction( { "POST" = "create", "GET" = "new" } )

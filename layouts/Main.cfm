@@ -17,6 +17,12 @@
 					SoapBox
 				</a>
 
+				<cfif auth().isLoggedIn()>
+					<ul class="navbar-nav">
+						<li><a href="#event.buildLink( "rants.new" )#" class="nav-link">Start a Rant</a></li>
+					</ul>
+				</cfif>
+
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="##navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>

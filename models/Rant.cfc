@@ -3,13 +3,15 @@
 */
 component accessors="true"{
 
+	//DI
+	property name="userService" inject;
+
 	// Properties
 	property name="id" type="string";
 	property name="body" type="string";
 	property name="createdDate" type="date";
 	property name="modifiedDate" type="date";
 	property name="userID" type="string";
-
 
 	/**
 	 * Constructor
