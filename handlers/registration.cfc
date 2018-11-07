@@ -56,6 +56,7 @@ component{
 		messagebox.success( "User registered!" );
 
 		auth.login( oUser );
+		messagebox.success("User registered and automagically logged in!");
 
         relocate( uri = "/" );
 	}
