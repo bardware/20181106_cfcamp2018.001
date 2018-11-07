@@ -57,4 +57,17 @@ component singleton accessors="true"{
 		return rant;
 	}
 
+	array function getForUserId( required userId ){
+        return queryExecute(
+            "select * from rants where userId = ? order By createdDate DESC",
+            [ arguments.userId ],
+            { returnType = "array" }
+        ).map( function( rant ){
+            return populator.populateFromStruct(
+                new(),
+                rant
+            )
+        } );
+    }
+
 }

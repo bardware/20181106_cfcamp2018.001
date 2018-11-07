@@ -3,6 +3,8 @@
 */
 component accessors="true"{
 
+	property name="rantService" inject;
+
 	// Properties
 	property name="id" type="string";
 	property name="username" type="string";
@@ -19,6 +21,10 @@ component accessors="true"{
 
 	boolean function isLoaded(){
         return ( !isNull( variables.id ) && len( variables.id ) );
+	}
+
+	array function getRants(){
+		return rantService.getForUserId( variables.id );
 	}
 
 }

@@ -3,9 +3,7 @@
 */
 component{
 
-	property name="userService" inject="";
-	property name="messagebox" inject="messagebox@cbmessagebox";
-	property name="auth" inject="authenticationService@cbauth";
+	property name="userService" inject;
 
 	// OPTIONAL HANDLER PROPERTIES
 	this.prehandler_only 	= "";
@@ -36,28 +34,21 @@ component{
 	*/
 
 	/**
-	* new
+	* show
 	*/
-	function new( event, rc, prc ){
-		event.setView( "registration/new" );
-	}
+	function show( event, rc, prc ){
+		event.paramvalue( "username", "" );
 
-	/**
-    * create
-    */
-	function create( event, rc, prc ){
-        event.paramValue( "email", "" )
-            .paramValue( "username", "" )
-			.paramValue( "password", "" );
+		prc.user = userService.retrieveUserByUsername( rc.username );
 
-		var oUser = populateModel( "User" )
+		if( !prc.user.isLoaded() ){
+			relocate( "404" );
+		}
 
-        userService.create( oUser );
-		messagebox.success( "User registered!" );
+		prc.aRants = prc.user.getRants( rc.username );
 
-		auth.login( oUser );
 
-        relocate( uri = "/" );
+		event.setView( "users/show" );
 	}
 
 }
